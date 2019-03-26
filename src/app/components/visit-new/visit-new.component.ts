@@ -95,7 +95,7 @@ export class VisitNewComponent extends NotifyComponent implements OnInit {
       this.visitService.process2(this.visit).subscribe(
         (response: Files) => {
           this.visit = new Visit(null, null, null);
-          this.showNotification('success', 'Files Processed sucess');
+          this.showNotification('success', 'CHUPA ESSA MANGA!!!! ERROOOOOOOOOOOOOOOOOOOOOOOOOOOU.');
           this.myForm2.reset();
         },
         err => {
