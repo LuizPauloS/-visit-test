@@ -1,3 +1,4 @@
+import { CandinComponent } from './components/candin/candin.component';
 import { customNotifierOptions } from './app.notify';
 import { NotifierModule } from 'angular-notifier';
 import { VisitService } from './services/visit.service';
@@ -27,7 +28,8 @@ import { NotifyComponent } from './components/common/notify/notify.component';
     ContentComponent,
     FooterComponent,
     HomeComponent,
-    VisitNewComponent
+    VisitNewComponent,
+    CandinComponent
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,9 @@ import { VisitService } from './../../services/visit.service';
 import { Visit } from './../../model/visit.model';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-visit-new',
@@ -24,7 +25,8 @@ export class VisitNewComponent extends NotifyComponent implements OnInit {
   constructor(
     private notifierService: NotifierService,
     private visitService: VisitService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     super(notifierService);
   }
@@ -93,10 +95,11 @@ export class VisitNewComponent extends NotifyComponent implements OnInit {
   process2() {
     if (this.validForm()) {
       this.visitService.process2(this.visit).subscribe(
-        (response: Files) => {
+        (response: any) => {
           this.visit = new Visit(null, null, null);
-          this.showNotification('success', 'CHUPA ESSA MANGA!!!! ERROOOOOOOOOOOOOOOOOOOOOOOOOOOU.');
+          this.showNotification('success', 'CHUPA ESSA MANGA!!!! ' + response.message);
           this.myForm2.reset();
+          this.router.navigate(['candin']);
         },
         err => {
           const httpError: HttpErrorResponse = err;
