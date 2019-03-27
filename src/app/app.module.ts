@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './services/employee.service';
 import { NotifyComponent } from './components/common/notify/notify.component';
 import { EmployeeListComponent } from './components/table/employee-list.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EmployeeListComponent } from './components/table/employee-list.componen
     EmployeeListComponent
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
