@@ -2,8 +2,10 @@ import { CandinComponent } from './components/candin/candin.component';
 import { customNotifierOptions } from './app.notify';
 import { NotifierModule } from 'angular-notifier';
 import { VisitService } from './services/visit.service';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -32,12 +34,13 @@ import { NotifyComponent } from './components/common/notify/notify.component';
     CandinComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),
-    routes
+    routes,
+    ToastrModule.forRoot()
   ],
   providers: [
     VisitService,
