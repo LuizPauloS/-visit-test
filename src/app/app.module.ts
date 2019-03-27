@@ -1,4 +1,3 @@
-import { CandinComponent } from './components/candin/candin.component';
 import { customNotifierOptions } from './app.notify';
 import { NotifierModule } from 'angular-notifier';
 import { VisitService } from './services/visit.service';
@@ -6,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { ToastrModule } from 'ngx-toastr';
+import { MatToolbarModule, MatTableModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './services/employee.service';
 import { NotifyComponent } from './components/common/notify/notify.component';
+import { EmployeeListComponent } from './components/table/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NotifyComponent } from './components/common/notify/notify.component';
     FooterComponent,
     HomeComponent,
     VisitNewComponent,
-    CandinComponent
+    EmployeeListComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,7 +41,9 @@ import { NotifyComponent } from './components/common/notify/notify.component';
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),
     routes,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatToolbarModule,
+    MatTableModule
   ],
   providers: [
     VisitService,

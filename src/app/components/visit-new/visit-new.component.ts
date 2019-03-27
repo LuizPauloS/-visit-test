@@ -101,15 +101,12 @@ export class VisitNewComponent implements OnInit {
     if (this.validForm()) {
       this.visitService.process2(this.visit).subscribe(
         (response: any) => {
-          this.visit = new Visit(null, null, null);
-          this.myForm2.reset();
-          this.router.navigate(['candin']);
-          // this.showNotification('success', 'CHUPA ESSA MANGA!!!! ' + response.message);
+          this.resetForm();
+          this.router.navigate(['employee']);
           this.toastr.success('CHUPA ESSA MANGA!!!! ' + response.message);
         },
         err => {
           const httpError: HttpErrorResponse = err;
-          // this.showNotification('error', httpError.error['error']);
           this.toastr.error( httpError.error['error']);
         }
       );
@@ -117,10 +114,16 @@ export class VisitNewComponent implements OnInit {
   }
 
   resetForm(): void {
-    alert('ENTROU NO RESET FORM');
     this.myForm2.patchValue({
       fileEmployees: null,
       fileStores: null
     });
+    this.visit.fileStores = null;
+    this.visit.fileEmployees = null;
+  }
+
+  cancel() {
+    this.resetForm();
+    this.toastr.info('Campos de entrada de arquivo limpos!');
   }
 }
